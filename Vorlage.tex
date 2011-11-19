@@ -1,0 +1,111 @@
+\documentclass[DIN, pagenumber=false, parskip=half,% 
+               fromalign=left, fromphone=true,%  
+               fromemail=true, fromurl=true, %
+               fromlogo=true, fromrule=false,
+               firstfoot=false,%%           Footerbereich
+               subject=beforeopening,%%  Plazierung der Betreffzeile
+               ]{scrlttr2}
+ 
+\usepackage[utf8]{inputenc}
+\usepackage{coordsys,logsys,color}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage[none]{hyphenat}
+\usepackage[breaklinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{afterpage}
+\usepackage{ifthen}
+\usepackage[T1]{fontenc}
+\usepackage{avant}
+\renewcommand*\familydefault{\sfdefault}
+\RequirePackage{graphicx}
+ 
+\definecolor{darkblue}{rgb}{0,0,.6}
+%pdfpagemode=FullScreen
+\hypersetup{pdftex=false, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue, citecolor=darkblue,pdfstartview=FitH
+%,pdfpagelayout=TwoColumnLeft
+} 
+
+\usepackage{lipsum}% provides filler text
+\newboolean{showbankaccount}
+\setboolean{showbankaccount}{false}
+
+%=================================================================================
+
+\input{Data}
+\ifdefined\openingtext
+\else
+  \ifdefined\tosalutation
+    \ifthenelse{\equal{\tosalutation}{Herr}}{
+      \def\openingtext{Sehr geehrter Herr \usekomavar{toname},}
+    }{
+      \ifthenelse{\equal{\tosalutation}{Frau}}{
+        \def\openingtext{Sehr geehrte Frau \usekomavar{toname},}
+      }{
+        \def\openingtext{Sehr geehrte Damen und Herren,}
+      }
+    }
+  \else
+    \def\openingtext{Sehr geehrte Damen und Herren,}
+  \fi
+\fi
+%=================================================================================
+
+\ifthenelse{\boolean{showbankaccount}}{
+\setkomavar{frombank}{Kto.Nr. \frombankaccountnumber \\BLZ \frombankcodenumber \\\frombankname}}{}
+
+
+
+\renewcommand{\enclname}{Anlagen}
+\setkomavar{enclseparator}{: }
+
+%\setkomavar{fromlogo}{}
+
+\fancyhf{}
+\pagestyle{fancy}
+\lfoot{\footnotesize 
+%\scriptsize
+\begin{tabular}[t]{l@{}}
+  \textbf{Postanschrift}\\
+  \usekomavar{fromname}\\
+  \usekomavar{fromaddress}
+\end{tabular}
+\ifkomavarempty{frombank}{}{
+  \begin{tabular}[t]{l@{}}
+    \textbf{Bankverbindung}\\
+    \usekomavar{frombank}
+  \end{tabular}}
+\begin{tabular}[t]{l@{}}
+  \ifkomavarempty{fromphone}{}{\textbf{Telefon}\\
+    \usekomavar{fromphone}}
+  \ifkomavarempty{fromfax}{}{
+    \\\textbf{Telefax}\\
+    \usekomavar{fromfax}}
+  \ifkomavarempty{fromemail}{}{
+    \\\textbf{E-Mail}\\
+    \usekomavar{fromemail}}
+\end{tabular}
+\begin{tabular}[t]{l@{}}
+  \ifthenelse{\isundefined{\fromjabber}}{}{\textbf{Jabber}\\
+    \fromjabber\\}\ifthenelse{\isundefined{\fromgpg}}{}{\textbf{GnuPG Key}\\
+    \fromgpg}
+\end{tabular}
+}
+\rfoot{\footnotesize Seite \thepage\ von \pageref{LastPage}}
+\renewcommand{\headheight}{24pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\global\def\headrulewidth{0pt}
+
+\begin{document}
+\begin{letter}{}
+\opening{\openingtext}
+\lhead{}
+\thispagestyle{fancy}
+\afterpage{\lhead{\usekomavar{subject}}\global\def\headrulewidth{0.4pt}}
+
+\input{Letter}
+
+\end{letter}
+ 
+\end{document}
