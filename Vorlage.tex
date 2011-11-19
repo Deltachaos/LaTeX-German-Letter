@@ -16,14 +16,14 @@
 \usepackage{lastpage}
 \usepackage{afterpage}
 \usepackage{ifthen}
-\usepackage[T1]{fontenc}
-\usepackage{avant}
-\renewcommand*\familydefault{\sfdefault}
+%\usepackage[T1]{fontenc}
+%\usepackage{fourier}
+%\renewcommand*\familydefault{\sfdefault}
 \RequirePackage{graphicx}
  
 \definecolor{darkblue}{rgb}{0,0,.6}
 %pdfpagemode=FullScreen
-\hypersetup{pdftex=false, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue, citecolor=darkblue,pdfstartview=FitH
+\hypersetup{pdftex=false, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue, citecolor=darkblue,pdfstartview=FitH,pdfborder={0 0 0}
 %,pdfpagelayout=TwoColumnLeft
 } 
 
@@ -92,7 +92,7 @@
     \fromgpg}
 \end{tabular}
 }
-\rfoot{\footnotesize Seite \thepage\ von \pageref{LastPage}}
+\rhead{\footnotesize Seite \thepage\ von \pageref{LastPage}}
 \renewcommand{\headheight}{24pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \global\def\headrulewidth{0pt}
