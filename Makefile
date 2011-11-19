@@ -13,5 +13,5 @@ make:
 	pdflatex -synctex=1 -interaction=nonstopmode --shell-escape Vorlage.tex
 	- rm `ls Vorlage.{aux,bbl,blg,dvi,log,out,synctex.gz}`
 show:
-	evince Vorlage.pdf
+	xdg-open Vorlage.pdf
 
