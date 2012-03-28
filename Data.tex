@@ -1,39 +1,42 @@
-\newcommand{\frombankaccountnumber}{12345676}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   LaTeX German Letter von Maximilian Ruta   %%
+%%   ist als Public Domain freigegeben.        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\frombankaccountnumber}{111\,111\,11}
 \newcommand{\frombankcodenumber}{100\,000\,00}
 \newcommand{\frombankname}{Bundesbank}
-
 
 \hypersetup{colorlinks=false} % Links nicht farbig machen
 
 \setkomavar{fromname}{Max Mustermann}
 \setkomavar{fromzipcode}{12345}
-\setkomavar{fromaddress}{Beispielstraße 56\\12345 Berlin}
-\setkomavar{fromphone}{+49 1520 1234567}
-%\setkomavar{fromfax}{+49 030 1234567}
-\setkomavar{fromemail}{\href{mailto:foo@example.com}{foo@example.com}}
-\setkomavar{fromurl}{\href{http://example.com/}{http://example.com}}
+\setkomavar{fromaddress}{Musterstraße 56\\12345 Musterstadt}
+\setkomavar{fromphone}{+49 1516 1111111}
+%\setkomavar{fromfax}{+49 (0) 1520 1111111}
+\setkomavar{fromemail}{\href{mailto:mmuster@gmail.com}{mmuster@gmail.com}}
+\setkomavar{fromurl}{\href{http://mustermann.de/}{http://mustermann.de}}
 \setkomavar{signature}{\includegraphics[scale=1]{Signature}\\Max Mustermann}
 
 %===========================================================================================================================
 
-\def\fromjabber{foo@jabber.example.com}
-\def\fromgpg{\href{http://pgp.mit.edu:11371/pks/lookup?op=get\&search=0x00000000}{0x00000000@pgp.mit.edu}}
+\def\fromjabber{mmustermann@jabber.ccc.de}
+\def\fromgpg{\href{http://pgp.mit.edu:11371/pks/lookup?op=get\&search=0xE2093512D5F67BBA}{0xE2093512D5F67BBA@pgp.mit.edu}}
 
-%\def\tosalutation{Herr} % Wenn nicht gesetzt wir \openingtext genutzt.
-%\def\openingtext{Sehr geehrte Damen und Herren} % Wenn nicht gesetzt wird "Sehr geehrte Damen und Herren" genutzt
+%\def\tosalutation{Frau} % Wennnicht gesetzt wir \openingtext genutzt.
+\def\openingtext{Sehr geehrter Herr Mustermann,} % Wenn nicht gesetzt wird "Sehr geehrte Damen und Herren" genutzt
 
-\setkomavar{toname}{Foo Baa}
-\setkomavar{toaddress}{Musterallee 133\\12345 Berlin}
+\setkomavar{toname}{Herr Mustermann}
+\setkomavar{toaddress}{Musterstraße 1\\12345 Musterstadt}
 \setkomavar{location}{\raggedright} % Steht im Brief oben rechts
 %\cc{Die Vereinsvorsitzende\\Alle Mitglieder}
 
-\setkomavar{myref}{Foo} % Mein Zeichen
-\setkomavar{yourmail}{} % Ihr Schreiben vom
-\setkomavar{yourref}{F12 - KG -Nr. 12345678901} % Ihr Zeichen
+\setkomavar{myref}{FOO1} % Mein Zeichen
+\setkomavar{yourmail}{21.03.2012} % Ihr Schreiben vom
+\setkomavar{yourref}{BAR1} % Ihr Zeichen
 
-\setkomavar{subject}{Foobaa}
+\setkomavar{subject}{Betreff}
 
-\setkomavar{place}{Berlin}
+\setkomavar{place}{Musterstadt}
 \setboolean{showbankaccount}{true}
 
 

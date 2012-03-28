@@ -1,4 +1,8 @@
-\documentclass[DIN, pagenumber=false, parskip=half,% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   LaTeX German Letter von Maximilian Ruta   %%
+%%   ist als Public Domain freigegeben.        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[DINmtext, pagenumber=false, parskip=half,% 
                fromalign=left, fromphone=true,%  
                fromemail=true, fromurl=true, %
                fromlogo=true, fromrule=false,
@@ -10,14 +14,17 @@
 \usepackage{coordsys,logsys,color}
 \usepackage{ngerman}
 \usepackage{listings}
-\usepackage[none]{hyphenat}
+%\usepackage[none]{hyphenat}
 \usepackage[breaklinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{afterpage}
 \usepackage{ifthen}
 \usepackage[T1]{fontenc}
-\usepackage{avant}
+\usepackage[scaled]{helvet}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{.}}}
 \renewcommand*\familydefault{\sfdefault}
 \RequirePackage{graphicx}
  
@@ -62,10 +69,16 @@
 
 %\setkomavar{fromlogo}{}
 
+\firsthead{\begin{tabular}{@{}l@{}}
+  \usekomavar{fromname}\\
+  \usekomavar{fromaddress}\\
+  \usekomavar*{fromphone}\usekomavar{fromphone}\\
+  \end{tabular}}
+
 \fancyhf{}
 \pagestyle{fancy}
-\lfoot{\footnotesize 
-%\scriptsize
+\lfoot{%\scriptsize
+\footnotesize
 \begin{tabular}[t]{l@{}}
   \textbf{Postanschrift}\\
   \usekomavar{fromname}\\
