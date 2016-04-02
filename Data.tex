@@ -2,9 +2,9 @@
 %%   LaTeX German Letter von Maximilian Ruta   %%
 %%   ist als Public Domain freigegeben.        %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\frombankaccountnumber}{111\,111\,11}
-\newcommand{\frombankcodenumber}{100\,000\,00}
-\newcommand{\frombankname}{Bundesbank}
+\newcommand{\frombankaccountnumber}{DE50\,3705\,0198\,0070\,1029\,67}
+\newcommand{\frombankcodenumber}{COLSDE33XXX}
+\newcommand{\frombankname}{Sparkasse KölnBonn}
 
 \hypersetup{colorlinks=false} % Links nicht farbig machen
 
@@ -22,35 +22,30 @@
 \def\fromjabber{mmustermann@jabber.ccc.de}
 \def\fromgpg{\href{http://pgp.mit.edu:11371/pks/lookup?op=get\&search=0xE2093512D5F67BBA}{0xE2093512D5F67BBA@pgp.mit.edu}}
 
-%\def\tosalutation{Frau} % Wennnicht gesetzt wir \openingtext genutzt.
-\def\openingtext{Sehr geehrter Herr Mustermann,} % Wenn nicht gesetzt wird "Sehr geehrte Damen und Herren" genutzt
+%\def\tosalutation{Frau} % Wenn nicht gesetzt wir \openingtext genutzt.
+% \def\openingtext{Sehr geehrter Herr Mustermann,} % Wenn nicht gesetzt wird "Sehr geehrte Damen und Herren" genutzt
 
 
 % Private Post an Firmenaddresse (Empfänger bekommt diese Ungeöffnet):
-% \setkomavar{toname}{Herr Max Mustermann\\Musterfirma}
+% \newcommand{\komatoname}{Herr Max Mustermann\\Musterfirma}
 % \setkomavar{toaddress}{Musterstraße 1\\12345 Musterstadt}
 % Geschäftliche Post an Firmenaddresse (Empfänger bekommt diese Geöffnet):
-% \setkomavar{toname}{Musterfirma\\Herr Max Mustermann}
+% \newcommand{\komatoname}{Musterfirma\\Herr Max Mustermann}
 % \setkomavar{toaddress}{Musterstraße 1\\12345 Musterstadt}
 
-\setkomavar{toname}{Herr Mustermann}
-\setkomavar{toaddress}{Musterstraße 1\\12345 Musterstadt}
-\setkomavar{location}{\raggedright} % Steht im Brief oben rechts
+% \newcommand{\komatoname}{}
+% \setkomavar{toaddress}{}
+\setkomavar{location}{} % Steht im Brief oben rechts
 %\cc{Die Vereinsvorsitzende\\Alle Mitglieder}
 
-\setkomavar{myref}{FOO1} % Mein Zeichen
-\setkomavar{yourmail}{21.03.2012} % Ihr Schreiben vom
-\setkomavar{yourref}{BAR1} % Ihr Zeichen
+% \setkomavar{myref}{FOO1} % Mein Zeichen
+\setkomavar{myref}{} % Mein Zeichen
+% \setkomavar{yourmail}{21.03.2012} % Ihr Schreiben vom
+\setkomavar{yourmail}{} % Ihr Schreiben vom
+% \setkomavar{yourref}{BAR1} % Ihr Zeichen
+\setkomavar{yourref}{} % Ihr Zeichen
 
-\setkomavar{subject}{Betreff}
 
 \setkomavar{place}{Musterstadt}
 \setboolean{showbankaccount}{true}
-
-
-
-
-
-
-
 

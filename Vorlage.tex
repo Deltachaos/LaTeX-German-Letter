@@ -22,8 +22,11 @@
 \usepackage{ifthen}
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{helvet}
+\usepackage[right]{eurosym}
 \usepackage{pdfpages}
 \usepackage{tabularx}
+\usepackage{picins}
+\usepackage{textpos}
 \newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{.}}}
 \renewcommand*\familydefault{\sfdefault}
 \RequirePackage{graphicx}
@@ -60,7 +63,7 @@
 %=================================================================================
 
 \ifthenelse{\boolean{showbankaccount}}{
-\setkomavar{frombank}{Kto.Nr. \frombankaccountnumber \\BLZ \frombankcodenumber \\\frombankname}}{}
+\setkomavar{frombank}{IBAN: \frombankaccountnumber \\BIC: \frombankcodenumber \\Bank: \frombankname}}{}
 
 
 
@@ -71,14 +74,13 @@
 
 \firsthead{\begin{tabular}{@{}l@{}}
   \usekomavar{fromname}\\
-  \usekomavar{fromaddress}\\
-  \usekomavar*{fromphone}\usekomavar{fromphone}\\
+  \usekomavar{fromaddress}
   \end{tabular}}
 
 \fancyhf{}
 \pagestyle{fancy}
-\lfoot{%\scriptsize
-\footnotesize
+\lfoot{\scriptsize
+%\footnotesize
 \begin{tabular}[t]{l@{}}
   \textbf{Postanschrift}\\
   \usekomavar{fromname}\\
@@ -110,8 +112,24 @@
 \renewcommand{\footrulewidth}{0.4pt}
 \global\def\headrulewidth{0pt}
 
+\setkomavar{toname}{\komatoname}
+
+\newcommand{\kto}{\begin{tabular}[t]{l@{}}
+  \textbf{Bankverbindung}\\
+  \usekomavar{frombank}
+\end{tabular}}
+
+\newcommand{\konto}{\kto}
+
+\makeatletter
+\@addtoplength{toaddrvpos}{0.5cm}
+\makeatother
+
 \begin{document}
 \begin{letter}{}
+\begin{textblock*}{3cm}(4.3cm,1.2cm)
+\IfFileExists{marke.pdf}{\parpic[r]{\includegraphics[trim=25mm 260mm 151mm 25mm,clip]{marke}}}{}
+\end{textblock*}
 \opening{\openingtext}
 \lhead{}
 \thispagestyle{fancy}

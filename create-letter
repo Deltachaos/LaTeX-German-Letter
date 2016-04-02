@@ -1,0 +1,70 @@
+#!/bin/bash
+
+LETTER_DIR="${HOME}/Dokumente/Briefverkehr/"
+PRESET_DIR="${HOME}/Dokumente/Briefverkehr/Vorlage/"
+
+openletterpath() {
+    subl "${LETTER_PATH}"
+}
+CURRENT_DATE=$(date +%Y-%m-%d)
+
+CURRENT_COUNT=$(ls "${LETTER_DIR}" | grep "^${CURRENT_DATE}" | wc -l)
+CURRENT_COUNT=$((${CURRENT_COUNT}+1))
+ID="${CURRENT_DATE}-${CURRENT_COUNT}"
+
+echo $ID;
+
+echo "Who is the recipient of the letter?"
+recipient=""
+while true; do
+	read recipient_part
+	if [ "${recipient_part}" ]; then
+		if [ -z "${recipient}" ]; then
+			recipient="${recipient_part}"
+		else
+			recipient="${recipient}\\\\${recipient_part}"
+		fi
+	else
+		break
+	fi
+done
+
+if [ "${recipient}" ]; then
+	echo "What is the recipient's address?"
+	address=""
+	while true; do
+		read address_part
+		if [ "${address_part}" ]; then
+			if [ -z "${address}" ]; then
+				address="${address_part}"
+			else
+				address="${address}\\\\${address_part}"
+			fi
+		else
+			break
+		fi
+	done
+fi
+
+read -p "What is the subject of the letter? " subject
+
+SAVE_SUBJECT=$(echo "$subject" | sed 's,/,_,g')
+
+if [ "${subject}" ]; then
+	ID="${ID} (${SAVE_SUBJECT})"
+fi;
+
+LETTER_PATH="${LETTER_DIR}/${ID}"
+
+cp -r "${PRESET_DIR}" "${LETTER_PATH}"
+
+cat >> "${LETTER_PATH}/Data.tex" <<EOF
+\newcommand{\komatoname}{${recipient}}
+\setkomavar{toaddress}{${address}}
+\setkomavar{subject}{${subject}}
+EOF
+
+openletterpath
+
+cd "${LETTER_PATH}"
+bash
